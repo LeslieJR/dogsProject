@@ -39,16 +39,16 @@
             <div class="modal-body">
               <form>
                 <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">NOMBRE:</label>
-                  <input type="text" class="form-control" id="nombre">
+                  <label for="nombre" class="col-form-label">NOMBRE:</label>
+                  <input onkeyup="guarda_ficha()" type="text" class="form-control" id="nombre">
                 </div>
                 <div class="form-group">
-                  <label for="message-text" class="col-form-label">EDAD:</label>
-                  <input type="text" class="form-control" id="edad">
+                  <label for="edad" class="col-form-label">EDAD:</label>
+                  <input onkeyup="guarda_ficha()" type="text" class="form-control" id="edad">
                 </div>
                 <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">SELECCIONA LA RAZA:</label>
-                  <select class="form-select" aria-label="Default select example">
+                  <label for="raza" class="col-form-label">SELECCIONA LA RAZA:</label>
+                  <select id="raza" class="form-select" aria-label="Default select example">
                     <option selected value="bulldog">Bulldog</option>
                     <option value="bullterrier">Bullterrier</option>
                     <option value="pastor-aleman">Pastor Aleman</option>
@@ -65,7 +65,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button onclick="guarda_ficha()" type="button" class="btn btn-primary">Save changes</button>
+              <button onclick="guarda_ficha()" disabled type="button" class="btn btn-primary" id="btn-save">Save changes</button>
             </div>
 
     <!-- END MODAL -->
