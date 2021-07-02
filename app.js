@@ -5,6 +5,7 @@ const port = 4000;
 const path = require('path');
 
 app.get('/', (req, res) =>{
+    console.log('hola')
     const filePath = path.join(__dirname, 'src','views', 'home.html');
     res.sendFile(filePath)
 })
