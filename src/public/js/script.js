@@ -38,7 +38,7 @@ function crear_ficha() {
   pintar()
   nombreperro.value=""
   edadperro.value=""
-  razaperro.value=""
+  
 
 
 }
@@ -95,7 +95,7 @@ function pintar() {
                 <li class="list-group-item">Edad: ${dogdb.perros[count].edad}</li>
                 <li class="list-group-item">Raza: ${dogdb.perros[count].raza}</li>
               </ul>
-              <button class="btn btn-success" data-bs-toggle="modal"
+              <button onclick="editar(${count})" class="btn btn-success" data-bs-toggle="modal"
               data-bs-target="#editar">Editar</button>
               <button onclick="eliminarFicha(${count})" class="btn btn-danger">Eliminar</button>
             </div>
@@ -120,4 +120,46 @@ if (dogdb) {
 }else {
     alert("No existe en la base de datos")
   }
+}
+
+function editar(count){
+  let dogdb = localStorage.getItem(PERROS_DB)
+  if(dogdb){
+    
+    dogdb = JSON.parse(dogdb)
+    const perro = dogdb.perros[count]
+    console.log(perro)
+    const nombreEdit = document.getElementById("nombre-editar")
+    const razaEdit = document.getElementById("raza-editar")
+    const edadEdit = document.getElementById("edad-editar")
+    const idPerrito = document.getElementById("idPerrito")
+    idPerrito.value = count
+    nombreEdit.value = perro.nombre
+    razaEdit.value = perro.raza
+    edadEdit.value = perro.edad
+    guarda_cambios()
+  }
+}
+
+function editarPerro(){
+  const nombreEdit = document.getElementById("nombre-editar")
+  const razaEdit = document.getElementById("raza-editar")
+  const edadEdit = document.getElementById("edad-editar")
+  let dogdb = localStorage.getItem(PERROS_DB)
+  if(dogdb){
+    
+    dogdb = JSON.parse(dogdb)
+    const idPerrito = document.getElementById("idPerrito")
+    const count = +idPerrito.value
+    const perro = dogdb.perros[count]
+
+    perro.nombre = nombreEdit.value
+    perro.edad = edadEdit.value
+    perro.raza = razaEdit.value
+
+    localStorage.setItem(PERROS_DB, JSON.stringify(dogdb))
+    pintar()
+  }
+  
+
 }
