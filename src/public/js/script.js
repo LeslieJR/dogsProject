@@ -35,6 +35,12 @@ function crear_ficha() {
   localStorage.setItem(PERROS_DB, JSON.stringify(db))
 
   alert("La ficha del perro se ha creado correctamente")
+  pintar()
+  nombreperro.value=""
+  edadperro.value=""
+  razaperro.value=""
+
+
 }
 
 function validar_ficha() {
@@ -70,6 +76,7 @@ function pintar() {
     if (dogdb) {
         dogdb = JSON.parse(dogdb)
         let count = 0
+        contenedor.innerHTML=""
         while (count < dogdb.perros.length) {
             console.log(dogdb.perros[count])
             
@@ -90,7 +97,7 @@ function pintar() {
               </ul>
               <button class="btn btn-success" data-bs-toggle="modal"
               data-bs-target="#editar">Editar</button>
-              <button class="btn btn-danger">Eliminar</button>
+              <button onclick="eliminarFicha(${count})" class="btn btn-danger">Eliminar</button>
             </div>
           </div>
         </div> `
@@ -100,4 +107,17 @@ function pintar() {
         }
     }
 
+}
+
+function eliminarFicha(count) {
+  let dogdb = localStorage.getItem(PERROS_DB)
+
+if (dogdb) {
+  dogdb = JSON.parse(dogdb)
+  dogdb.perros.splice(count,1)
+  localStorage.setItem(PERROS_DB,JSON.stringify(dogdb))
+  pintar()
+}else {
+    alert("No existe en la base de datos")
+  }
 }
