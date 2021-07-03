@@ -63,3 +63,16 @@ function guarda_cambios() {
     btn.setAttribute("disabled", true);
   }
 }
+
+function pintar() {
+    let dogdb = localStorage.getItem(PERROS_DB)
+    if (dogdb) {
+        dogdb = JSON.parse(dogdb)
+        let count = 0
+        while (count < dogdb.perros.length) {
+            console.log(dogdb.perros[count])
+            count++
+        }
+    }
+
+}
