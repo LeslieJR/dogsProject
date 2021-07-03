@@ -65,13 +65,38 @@ function guarda_cambios() {
 }
 
 function pintar() {
+    const contenedor = document.getElementById("contenedor")
     let dogdb = localStorage.getItem(PERROS_DB)
     if (dogdb) {
         dogdb = JSON.parse(dogdb)
         let count = 0
         while (count < dogdb.perros.length) {
             console.log(dogdb.perros[count])
-            count++
+            
+
+            const template = `
+            <div class="col-6">
+          <div class="card" style="width: 18rem">
+            <img
+              src="https://images.dog.ceo/breeds/poodle-standard/n02113799_2248.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Nombre: ${dogdb.perros[count].nombre}</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Edad: ${dogdb.perros[count].edad}</li>
+                <li class="list-group-item">Raza: ${dogdb.perros[count].raza}</li>
+              </ul>
+              <button class="btn btn-success" data-bs-toggle="modal"
+              data-bs-target="#editar">Editar</button>
+              <button class="btn btn-danger">Eliminar</button>
+            </div>
+          </div>
+        </div> `
+        
+        count++
+        contenedor.innerHTML = contenedor.innerHTML + template
         }
     }
 
