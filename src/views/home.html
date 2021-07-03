@@ -65,7 +65,7 @@
         </div>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal Crear-->
     <div
       class="modal fade"
       id="exampleModal"
@@ -89,7 +89,7 @@
               <div class="form-group">
                 <label for="nombre" class="col-form-label">NOMBRE:</label>
                 <input
-                  onkeyup="guarda_ficha()"
+                  onkeyup="validar_ficha()"
                   type="text"
                   class="form-control"
                   id="nombre"
@@ -98,7 +98,7 @@
               <div class="form-group">
                 <label for="edad" class="col-form-label">EDAD:</label>
                 <input
-                  onkeyup="guarda_ficha()"
+                  onkeyup="validar_ficha()"
                   type="text"
                   class="form-control"
                   id="edad"
@@ -133,16 +133,16 @@
               class="btn btn-secondary"
               data-bs-dismiss="modal"
             >
-              Close
+              Cerrar
             </button>
             <button
-              onclick="guarda_ficha()"
+              onclick="crear_ficha()"
               disabled
               type="button"
               class="btn btn-primary"
               id="btn-save"
             >
-              Save changes
+              Guardar Cambios
             </button>
           </div>
         </div>
@@ -217,7 +217,7 @@
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
-                Close
+                Cerrar
               </button>
               <button
                 onclick="guarda_cambios()"
@@ -226,7 +226,7 @@
                 class="btn btn-primary"
                 id="btn-editar"
               >
-                Save changes
+                Guardar Cambios
               </button>
             </div>
           </div>
